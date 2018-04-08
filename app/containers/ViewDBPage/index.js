@@ -14,14 +14,15 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import PageHeader from 'components/PageHeader/index';
-import DbSideSearch from 'components/DbSideSearch';
-import DbViewPort from 'components/DbViewPort';
+import ListView from 'components/ListView';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectViewDbpage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-// import messages from './messages';
+
+// import moch data
+import mochData from '../../../moch_data/json/test_data.json';
 
 export class ViewDbpage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -46,8 +47,7 @@ export class ViewDbpage extends React.Component { // eslint-disable-line react/p
         </Helmet>
         <PageHeader title="Database" />
         <ViewportWrap>
-          <DbViewPort />
-          <DbSideSearch />
+          <ListView entries={mochData} />
         </ViewportWrap>
       </div>
     );
