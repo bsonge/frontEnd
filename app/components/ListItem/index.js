@@ -15,16 +15,12 @@ class ListItem extends React.Component { // eslint-disable-line react/prefer-sta
       const data = [];
       data.push(Object.keys(this.props.entry));
       data.push(Object.values(this.props.entry));
-      // const data = [];
-      // for (let i = 0, keys = Object.keys(this.props.entry); i < keys.length; i += 1) {
-      //   data.push(`<li> ${keys[i]}: ${this.props.entry[keys[i]]}</li>`);
-      // }
     }
   }
   render() {
     return (
       <ul>
-        {<li>key:value</li>}
+        <li>key:value</li>
       </ul>
     );
   }

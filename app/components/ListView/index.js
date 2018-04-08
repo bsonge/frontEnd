@@ -21,18 +21,20 @@ import PageTurn from '../PageTurn';
 class ListView extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
-    this.state = {
-      page: 1,
-      cursor: 1,
-      chunk: 12,
-    };
+    this.turnPage = this.turnPage.bind(this);
+  }
+  turnPage(direction) {
+    const newPage = this.props.page + direction; // idealy this is -1 for left and 1 for right, but multiple page turn support ain't bad
+    if (newPage >= 1 && newPage <= this.props.lastPg) {
+      this.props.page = newPage;
+    }
   }
   // recieve array from props
   // pass down elements to list item
   render() {
     const theme = getActive();
     const ViewPort = styled.div`
-      border: 1px solid black;
+      ${''/* border: 1px solid black; */}
       border-radius: 5px;
       margin:auto;
       width:100%;
@@ -49,7 +51,7 @@ class ListView extends React.Component { // eslint-disable-line react/prefer-sta
     const mochComponents = this.props.entries.map((entry) => <ListItem entry={entry} />);
     return (
       <Wrapper>
-        <PageTurn />
+        <PageTurn turnPage={this.turnPage} currentPage={this.props.page} lastPage={this.props.lastPg} />
         <ViewPort>{mochComponents}</ViewPort>
       </Wrapper>
     );
@@ -58,6 +60,10 @@ class ListView extends React.Component { // eslint-disable-line react/prefer-sta
 
 ListView.propTypes = {
   entries: PropTypes.array.isRequired,
+  page: PropTypes.number.isRequred,
+  // cursor: PropTypes.number.isRequred,
+  // chunk: PropTypes.number.isRequred,
+  lastPg: PropTypes.number.isRequred,
 };
 
 export default ListView;
