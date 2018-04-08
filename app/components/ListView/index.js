@@ -22,6 +22,7 @@ class ListView extends React.Component { // eslint-disable-line react/prefer-sta
     if (newPage >= 1 && newPage <= this.props.lastPg) {
       this.props.page = newPage;
     }
+    // when pageis turned, ask for next dataset, set cursor to 0 of new data,
   }
   // recieve array from props
   // pass down elements to list item
