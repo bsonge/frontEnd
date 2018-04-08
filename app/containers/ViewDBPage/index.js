@@ -14,8 +14,9 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import PageHeader from 'components/PageHeader/index';
-import DbSideSearch from 'components/DbSideSearch';
-import DbViewPort from 'components/DbViewPort';
+// import DbSideSearch from 'components/DbSideSearch';
+// import DbViewPort from 'components/DbViewPort';
+import DataView from 'components/DataView';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectViewDbpage from './selectors';
@@ -33,8 +34,9 @@ export class ViewDbpage extends React.Component { // eslint-disable-line react/p
   }
   render() {
     const ViewportWrap = styled.div`
-      display: flex;
-      align-items:center;
+      ${''/* Since the subcontainer is a flex container, I dont know if we should make this flex unless we need to.  Things can sometimes get wonky when you flex a flex container */}
+      ${''/* display: flex; */}
+      ${''/* align-items:center; */}
       justify-content:center;
       height:80vh;
     `;
@@ -46,8 +48,9 @@ export class ViewDbpage extends React.Component { // eslint-disable-line react/p
         </Helmet>
         <PageHeader title="Database" />
         <ViewportWrap>
-          <DbViewPort />
-          <DbSideSearch />
+          {/* <DbViewPort />
+          <DbSideSearch /> */}
+          <DataView data={{ test: 'data', other: 'thing', qdon: 'jdubs' }} />
         </ViewportWrap>
       </div>
     );
