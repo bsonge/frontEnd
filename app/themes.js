@@ -103,6 +103,16 @@ const styledElements = {
         display: -webkit-flex;
         display: flex;
       `,
+  SearchBar: styled.input`
+            border: 1px solid black;
+            margin-left: 5px;
+            margin-bottom: 5px;
+            border-radius: 15px;
+            background-color: lavender;
+            width: 65%;
+            height: 35px;
+            padding-left: 15px;
+          `,
 };
 
 export {
