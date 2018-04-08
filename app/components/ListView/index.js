@@ -9,13 +9,7 @@ import styled from 'styled-components';
 import { getActive } from 'themes';
 import PropTypes from 'prop-types';
 
-// import { FormattedMessage } from 'react-intl';
-// import messages from './messages';
-
-// import SelectDatabase from '../SelectDatabase';
 import ListItem from '../ListItem';
-// import SelectDatabase from '../SelectDatabase';
-// import Filter from '../DB_Helper_Components/Filter';
 import PageTurn from '../PageTurn';
 
 class ListView extends React.Component { // eslint-disable-line react/prefer-stateless-function
