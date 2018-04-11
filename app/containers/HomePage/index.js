@@ -47,11 +47,12 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
       -webkit-flex-direction: column;
       flex-direction: column;
     `;
-
     const data = (this.props.homepage.hasRecievedData) ? Object.entries(this.props.homepage.searchResults) : [];
     const shownResults = [];
     for (let i = 0; i < data.length; i += 1) {
-      shownResults.push(<ListView entries={data[i][1]} key={i.toString()} />);
+      if (data[i][1].length > 0) {
+        shownResults.push(<ListView entries={data[i][1]} key={i.toString()} />);
+      }
     }
 
     const CenterImage = styled.div`
