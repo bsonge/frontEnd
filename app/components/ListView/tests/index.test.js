@@ -9,7 +9,7 @@ const thing = [{ test: 'thing' }, { other: '1' }];
 describe('<ListView />', () => {
   it('Renders something', () => {
     const div = styledComponent.div;
-    const test = shallow(<ListView entries={thing} entry={thing} lastPg={3} page={2} />);
+    const test = shallow(<ListView entries={thing} />);
     expect(
       test.find(div).node
     ).toBeDefined();

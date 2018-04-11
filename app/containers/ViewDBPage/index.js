@@ -37,7 +37,7 @@ export class ViewDbpage extends React.Component { // eslint-disable-line react/p
       display: flex;
       align-items:center;
       justify-content:center;
-      height:80vh;
+      ${''/* height:80vh; */}
     `;
     return (
       <div>
@@ -47,7 +47,7 @@ export class ViewDbpage extends React.Component { // eslint-disable-line react/p
         </Helmet>
         <PageHeader title="Database" />
         <ViewportWrap>
-          <ListView entries={mochData} />
+          <ListView entries={mochData} titleField={'title'} descriptionField={null} />
         </ViewportWrap>
       </div>
     );
