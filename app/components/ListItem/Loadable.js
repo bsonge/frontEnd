@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for DbViewport
+ * Asynchronously loads the component for ListItem
  *
  */
 

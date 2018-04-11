@@ -9,11 +9,8 @@ export function* getEntry(action) {
     `${encodeURIComponent(key)}=${encodeURIComponent(action.payload[key])}`
   ).join('&');
 
-  console.log('searchParams: ', searchParams);
-
   const requestUrl = `${API_URL}/search/basic?${searchParams}`;
 
-  console.log('requestUrl: ', requestUrl);
 
   const options = {
     method: 'GET',
@@ -24,15 +21,19 @@ export function* getEntry(action) {
 
   try {
     const results = yield call(request, requestUrl, options);
-    console.log('results: ', results);
-    yield put(searchResults(results));
+    if (results.success) {
+      yield put(searchResults(results.payload));
+    } else {
+      // TODO: need to add an action that handles fail and tells createStructuredSelector
+      window.alert('OH NO! IT FAILED! x.x');
+    }
   } catch (err) {
     console.error(err);
   }
 }
 // Individual exports for testing
+
 export function* defaultSaga() {
-  console.log(yield takeEvery(GET_ENTRY, getEntry));
   yield takeEvery(GET_ENTRY, getEntry);
 }
 export default defaultSaga;

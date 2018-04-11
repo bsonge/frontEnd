@@ -46,7 +46,9 @@ export class EntriesPage extends React.Component { // eslint-disable-line react/
         window.alert('This entry has not defined connection to database');
         return;
       }
-      data[fields[i].name] = fields[i].value;
+      if (fields[i].value) {
+        data[fields[i].name] = fields[i].value;
+      }
     }
     this.props.dispatch(postEntry(entryType, data));
   }
