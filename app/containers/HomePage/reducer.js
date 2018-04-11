@@ -10,7 +10,10 @@ import {
   SEARCH_RESULTS,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  hasRecievedData: false,
+  searchResults: {},
+});
 
 function homePageReducer(state = initialState, action) {
   switch (action.type) {
@@ -19,7 +22,9 @@ function homePageReducer(state = initialState, action) {
     case SEARCH_RESULTS:
       // console.log(state.set('searchResults', action.payload));
 
-      return state.set('searchResults', action.payload);
+      return state
+      .set('searchResults', action.payload)
+      .set('hasRecievedData', true);
     default:
       return state;
   }

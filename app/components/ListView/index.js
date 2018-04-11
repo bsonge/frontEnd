@@ -28,7 +28,7 @@ class ListView extends React.Component { // eslint-disable-line react/prefer-sta
       height:100%;
       border-radius: 5px;
     `;
-    const mochComponents = this.props.entries.map((entry) => <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} />);
+    const mochComponents = this.props.entries.map((entry, idx) => <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} key={idx.toString()} />);
     return (
       <Wrapper>
         <ViewPort>{mochComponents}</ViewPort>

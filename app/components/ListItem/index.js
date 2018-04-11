@@ -17,9 +17,9 @@ class ListItem extends React.Component { // eslint-disable-line react/prefer-sta
     if (typeof (this.props.entry) === 'object') {
       // data.push(Object.keys(this.props.entry));
       // data.push(Object.values(this.props.entry));
-      this.data = Object.keys(this.props.entry).map((key) => {
+      this.data = Object.keys(this.props.entry).map((key, idx) => {
         if (key !== this.props.titleField && key !== this.props.descriptionField && this.props.entry[key]) {
-          return (<this.Item ><u>{key.split('_').join(' ').toUpperCase()}</u>: {this.props.entry[key]}</this.Item>);
+          return (<this.Item key={idx.toString()}><u>{key.split('_').join(' ').toUpperCase()}</u>: {this.props.entry[key]}</this.Item>);
         }
         return null;
       });
@@ -45,7 +45,7 @@ class ListItem extends React.Component { // eslint-disable-line react/prefer-sta
 }
 
 ListItem.propTypes = { // note: It would be neat to pass in an object of keys in order of desired display then display them in order using loops
-  entry: PropTypes.Any,
+  entry: PropTypes.any,
   titleField: PropTypes.string,
   descriptionField: PropTypes.string,
 };

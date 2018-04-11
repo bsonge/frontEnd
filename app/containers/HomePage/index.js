@@ -13,8 +13,9 @@ import { compose } from 'redux';
 import { push } from 'react-router-redux';
 
 import styled from 'styled-components';
-import SearchBar from 'components/SearchBar/index';
-import PageHeader from 'components/PageHeader/index';
+import SearchBar from 'components/SearchBar';
+import PageHeader from 'components/PageHeader';
+import ListView from 'components/ListView';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -43,6 +44,14 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
       -webkit-flex-direction: column;
       flex-direction: column;
     `;
+
+    const data = (this.props.homepage.hasRecievedData) ? Object.entries(this.props.homepage.searchResults) : [];
+    const shownResults = [];
+    for (let i = 0; i < data.length; i += 1) {
+      shownResults.push(<ListView entries={data[i][1]} key={i.toString()} />);
+    }
+
+
     return (
       <div>
         <Helmet>
@@ -54,6 +63,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
         <FlexBox >
           <SearchBar handler={this.submit} />
         </FlexBox>
+        {shownResults}
       </div>
     );
   }
@@ -61,6 +71,10 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
 
 HomePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  homepage: PropTypes.shape({
+    hasRecievedData: PropTypes.bool.isRequired,
+    searchResults: PropTypes.object,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({
