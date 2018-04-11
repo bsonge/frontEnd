@@ -3,13 +3,14 @@
  */
 
 /* eslint-disable redux-saga/yield-effects */
-// import { take, call, put, select } from 'redux-saga/effects';
-// import { defaultSaga } from '../saga';
+import { takeEvery } from 'redux-saga/effects';
+import { defaultSaga, getEntry } from '../saga';
+import { GET_ENTRY } from '../constants';
 
-// const generator = defaultSaga();
+const generator = defaultSaga();
 
 describe('defaultSaga Saga', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('Expect to take every with getEntry', () => {
+    expect(generator.next().value).toEqual(takeEvery(GET_ENTRY, getEntry));
   });
 });

@@ -14,7 +14,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import PageHeader from 'components/PageHeader/index';
-import ListView from 'components/ListView';
+// import ListView from 'components/ListView';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectViewDbpage from './selectors';
@@ -22,7 +22,7 @@ import reducer from './reducer';
 import saga from './saga';
 
 // import moch data
-import mochData from '../../../moch_data/json/test_data.json';
+// import mochData from '../../../moch_data/json/test_data.json';
 
 export class ViewDbpage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -39,6 +39,7 @@ export class ViewDbpage extends React.Component { // eslint-disable-line react/p
       justify-content:center;
       ${''/* height:80vh; */}
     `;
+    // console.log()
     return (
       <div>
         <Helmet>
@@ -47,7 +48,7 @@ export class ViewDbpage extends React.Component { // eslint-disable-line react/p
         </Helmet>
         <PageHeader title="Database" />
         <ViewportWrap>
-          <ListView entries={mochData} titleField={'title'} descriptionField={null} />
+          {/* <ListView entries={} titleField={'title'} /> */}
         </ViewportWrap>
       </div>
     );

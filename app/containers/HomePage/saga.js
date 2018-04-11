@@ -31,6 +31,10 @@ export function* getEntry(action) {
   }
 }
 // Individual exports for testing
-export default function* defaultSaga() {
+
+export function* defaultSaga() {
+  console.log(yield takeEvery(GET_ENTRY, getEntry));
+
   yield takeEvery(GET_ENTRY, getEntry);
 }
+export default defaultSaga;

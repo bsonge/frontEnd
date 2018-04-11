@@ -17,7 +17,8 @@ function homePageReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case SEARCH_RESULTS:
-      console.log(state.set('searchResults', action.payload));
+      // console.log(state.set('searchResults', action.payload));
+
       return state.set('searchResults', action.payload);
     default:
       return state;
