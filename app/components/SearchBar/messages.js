@@ -7,19 +7,19 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   DefaultPlaceHolder: {
-    id: 'app.components.SearchBar.header',
+    id: 'app.components.SearchBar.DefaultPlaceHolder',
     defaultMessage: 'Search the Database',
   },
   TargetPlaceHolder: {
-    id: 'app.components.SearchBar.header',
+    id: 'app.components.SearchBar.TargetPlaceHolder',
     defaultMessage: 'Search Targets',
   },
   ExperimentPlaceHolder: {
-    id: 'app.components.SearchBar.header',
+    id: 'app.components.SearchBar.ExperimentPlaceHolder',
     defaultMessage: 'Search Experiments',
   },
   CitationPlaceHolder: {
-    id: 'app.components.SearchBar.header',
+    id: 'app.components.SearchBar.CitationPlaceHolder',
     defaultMessage: 'Search Citation',
   },
 });

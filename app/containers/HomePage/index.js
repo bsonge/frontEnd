@@ -34,9 +34,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
     this.props.dispatch(push(path));
   }
   submit(destination, text) {
-    console.log(text);
     this.props.dispatch(getEntry(null, { q: text }));
-    console.log('We made it boys');
   }
   render() {
     const FlexBox = styled.div`
