@@ -26,6 +26,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
+import '!file-loader?name=[name].[ext]!./images/CheMoa_Transparent.png';
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import '!file-loader?name=[name].[ext]!./images/icon-72x72.png';
 import '!file-loader?name=[name].[ext]!./images/icon-96x96.png';

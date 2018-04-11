@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.Footer.header',
-    defaultMessage: 'This is Footer container !',
+    defaultMessage: '© 2018 Quinton Donnelly, William Jackson, Justin Nunez, Brayden Songe',
   },
 });

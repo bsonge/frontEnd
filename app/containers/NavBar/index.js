@@ -10,12 +10,13 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { push } from 'react-router-redux';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 
 import NavBtn from 'components/BTNS/NavBtn/Loadable';
-import { getActive, styledElements } from '../../themes';
+import { getActive } from '../../themes';
 import makeSelectNavBar from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -32,19 +33,44 @@ export class NavBar extends React.Component { // eslint-disable-line react/prefe
 
   render() {
     const theme = getActive();
-    const NavWrap = styledElements.NavWrap;
     // const ProfileBtn = styledElements.ProfileBtn;
     return (
-      <NavWrap>
-        <NavBtn theme={theme} text="HOME" link="/" handler={(link) => this.navigate(link)} />
-        <NavBtn theme={theme} text="ENTRIES" link="/entries" handler={(link) => this.navigate(link)} />
-        <NavBtn theme={theme} text="DATABASE" link="/database" handler={(link) => this.navigate(link)} />
-        <NavBtn theme={theme} text="LOGIN" link="/login" handler={(link) => this.navigate(link)} />
-        <NavBtn theme={theme} text="REGISTRATION" link="/registration" handler={(link) => this.navigate(link)} />
-        <NavBtn theme={theme} text="PROFILE" link="/profile" handler={(link) => this.navigate(link)} />
-        <NavBtn theme={theme} text="ACCOUNTS" link="/accounts" handler={(link) => this.navigate(link)} />
-        {/* <NavBtn theme={theme} text="DENIED" link="/denied" handler={(link) => this.navigate(link)} /> */}
-      </NavWrap>
+      <Navbar inverse collapseOnSelect fluid>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <Nav>
+              <NavBtn theme={theme} text="ChemMoA" link="/" handler={(link) => this.navigate(link)} />
+            </Nav>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse >
+          <Nav>
+            <NavItem>
+              <NavBtn theme={theme} text="HOME" link="/" handler={(link) => this.navigate(link)} />
+            </NavItem>
+            <NavItem>
+              <NavBtn theme={theme} text="ENTRIES" link="/entries" handler={(link) => this.navigate(link)} />
+            </NavItem>
+            <NavItem>
+              <NavBtn theme={theme} text="DATABASE" link="/database" handler={(link) => this.navigate(link)} />
+            </NavItem>
+            <NavItem>
+              <NavBtn theme={theme} text="LOGIN" link="/login" handler={(link) => this.navigate(link)} />
+            </NavItem>
+            <NavItem>
+              <NavBtn theme={theme} text="REGISTRATION" link="/registration" handler={(link) => this.navigate(link)} />
+            </NavItem>
+            <NavItem>
+              <NavBtn theme={theme} text="PROFILE" link="/profile" handler={(link) => this.navigate(link)} />
+            </NavItem>
+            <NavItem>
+              <NavBtn theme={theme} text="ACCOUNTS" link="/accounts" handler={(link) => this.navigate(link)} />
+            </NavItem>
+            {/* <NavBtn theme={theme} text="DENIED" link="/denied" handler={(link) => this.navigate(link)} /> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }

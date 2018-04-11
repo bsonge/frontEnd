@@ -31,11 +31,14 @@ injectGlobal`
     margin:0;
     padding: 0;
     height: 100%;
+    padding-bottom: 20px;
 
   }
   .app_container {
     min-height:100%;
-    position:relative;
+    min-width:100%;
+    padding:0;
+    margin:0;
   }
 
   .header {
@@ -54,11 +57,16 @@ injectGlobal`
   }
 
   .footer{
-    position:absolute;
     bottom: 0px;  ${''/* Padding for top of footer */}
     width: 100%;
-  height: 8em; ${''/* Height of footer */}
-    background: #111;
+    margin-top:10px;
+    display:flex;
+    -webkit-display:flex;
+    align-items:center;
+    justify-content:center;
+    height: 4em;
+    position:fixed;
+    background: #222;
     color: white;
   }
 

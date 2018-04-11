@@ -31,7 +31,7 @@ import Footer from 'containers/Footer/Loadable';
 
 export default function App() {
   return (
-    <div className="app_container">
+    <div className="app_container container-fluid">
       {/* <NavBar location={this.props.location} /> */}
       <NavBar />
       <div className="body_wrap">
