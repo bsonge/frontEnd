@@ -6,37 +6,45 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 class ListItem extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
+    this.Item = styled.ul`
+      list-style: none;
+    `;
     if (typeof (this.props.entry) === 'object') {
       // data.push(Object.keys(this.props.entry));
       // data.push(Object.values(this.props.entry));
       this.data = Object.keys(this.props.entry).map((key) => {
-        if (key !== this.props.titleField && key !== this.props.descriptionField) {
-          return (<li >{key}: {this.props.entry[key]}</li>);
+        if (key !== this.props.titleField && key !== this.props.descriptionField && this.props.entry[key]) {
+          return (<this.Item ><u>{key.split('_').join(' ').toUpperCase()}</u>: {this.props.entry[key]}</this.Item>);
         }
         return null;
       });
     }
   }
   render() {
+    const ItemList = styled.ul`
+      border-radius: 5px;
+      border: 1px solid #222222;
+    `;
     const { titleField, descriptionField } = this.props;
     const title = titleField && this.props.entry[titleField];
     const desc = descriptionField && this.props.entry[descriptionField];
     return (
-      <ul style={{ border: '1px solid black' }}>
-        {title ? <li style={{ listStyle: 'none' }}><h4>{title}</h4></li> : ''}
-        {desc ? <li style={{ listStyle: 'none' }}><p>{desc}</p></li> : ''}
+      <ItemList>
+        {title ? <this.Item style={{ listStyle: 'none' }}><h4>{title}</h4></this.Item> : ''}
+        {desc ? <this.Item style={{ listStyle: 'none' }}><p>{desc}</p></this.Item> : ''}
         {this.data}
-      </ul>
+        <br />
+      </ItemList>
     );
   }
 }
 
-ListItem.propTypes = {
+ListItem.propTypes = { // note: It would be neat to pass in an object of keys in order of desired display then display them in order using loops
   entry: PropTypes.Any,
   titleField: PropTypes.string,
   descriptionField: PropTypes.string,
