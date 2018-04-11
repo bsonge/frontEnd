@@ -28,16 +28,15 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
   constructor(props) {
     super(props);
     this.navigate = this.navigate.bind(this);
-    this.state = { selection: 'blank' };
-  }
-  changeSelection = (e) => {
-    this.setState({ selection: e.target.value });
+    this.submit = this.submit.bind(this);
   }
   navigate(path) {
     this.props.dispatch(push(path));
   }
   submit(destination, text) {
-    this.props.dispatch(getEntry({ q: text }));
+    console.log(text);
+    this.props.dispatch(getEntry(null, { q: text }));
+    console.log('We made it boys');
   }
   render() {
     const FlexBox = styled.div`
