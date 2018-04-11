@@ -9,8 +9,7 @@ export function* getEntry(action) {
     `${encodeURIComponent(key)}=${encodeURIComponent(action.payload[key])}`
   ).join('&');
 
-  console.log('searchParams: ');
-  console.log(searchParams);
+  console.log('searchParams: ', searchParams);
 
   const requestUrl = `${API_URL}/search/basic?${searchParams}`;
 
@@ -25,9 +24,8 @@ export function* getEntry(action) {
 
   try {
     const results = yield call(request, requestUrl, options);
-    console.log(results);
-    yield console.log(results);
-    yield put(searchResults, results);
+    console.log('results: ', results);
+    yield put(searchResults(results));
   } catch (err) {
     console.error(err);
   }
