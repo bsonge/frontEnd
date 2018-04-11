@@ -35,12 +35,4 @@ describe('<SearchBar />', () => {
     expect(wrapper.find('form').node).toBeDefined();
     expect(wrapper.find('input').node).toBeDefined();
   });
-
-  // it('Should get a theme', () => {
-  //   const theme = getActive();
-  //   const wrapper = mount(
-  //     <SearchBar handler={() => {}} />
-  //   );
-  //   expect(wrapper.instance().theme).toEqual(theme);
-  // });
 });
