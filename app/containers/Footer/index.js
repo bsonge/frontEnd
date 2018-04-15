@@ -22,12 +22,12 @@ import messages from './messages';
 export class Footer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="footer">
+      <div className="footer fixed-bottom">
         <Helmet>
           <title>Footer</title>
           <meta name="description" content="Description of Footer" />
         </Helmet>
-        <FormattedMessage {...messages.header} />
+        <p className="text-center"><FormattedMessage {...messages.header} /></p>
       </div>
     );
   }

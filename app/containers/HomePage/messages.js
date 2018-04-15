@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.containers.HomePage.header',
     defaultMessage: 'ChemMoa DBMS',
   },
+  description: {
+    id: 'app.containers.HomePage.description',
+    defaultMessage: 'ChemMoA database for viewing information about chemical toxicity',
+  },
 });

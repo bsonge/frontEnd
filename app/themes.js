@@ -90,11 +90,10 @@ const styledElements = {
         margin-bottom: 5px;
       `,
   NavWrap: styled.div`
-        height: 50px;
-        width: 100%;
-        background-color: #111;
+        background-color: #222;
         display: -webkit-flex;
         display: flex;
+        align-items: center;
       `,
   ProfileBtn: styled.div`
         height: 50px;

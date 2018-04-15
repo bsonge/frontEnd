@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import PageHeader from 'components/PageHeader/index';
-import BigBtn1 from 'components/BTNS/BigBtn1';
+import SearchBar from 'components/SearchBar/index';
 import { HomePage } from '../index';
 
 describe('<HomePage />', () => {
@@ -11,8 +11,8 @@ describe('<HomePage />', () => {
     expect(wrapper.find(PageHeader).length).toEqual(1);
   });
 
-  it('Expect to have 3 <BigBtn1 /> components', () => {
+  it('Expect to have a <SearchBar /> component', () => {
     const wrapper = shallow(<HomePage />);
-    expect(wrapper.find(BigBtn1).length).toEqual(3);
+    expect(wrapper.find(SearchBar).length).toEqual(1);
   });
 });

@@ -29,9 +29,26 @@ class SearchBar extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   changeSelection = (e) => {
+    let message = '';
+    switch (e.target.value) {
+      case 'All':
+        message = messages.DefaultPlaceHolder.defaultMessage;
+        break;
+      case 'Target':
+        message = messages.TargetPlaceHolder.defaultMessage;
+        break;
+      case 'Experiment':
+        message = messages.ExperimentPlaceHolder.defaultMessage;
+        break;
+      case 'Citation':
+        message = messages.CitationPlaceHolder.defaultMessage;
+        break;
+      default:
+        message = 'Search the Database';
+    }
     this.setState({
-      selection: e.target.value,
-      destination: e.target.dest,
+      selection: message,
+      destination: e.target.value,
     });
   }
 
@@ -50,11 +67,11 @@ class SearchBar extends React.Component { // eslint-disable-line react/prefer-st
     return (
       <div>
         <Select onChange={this.changeSelection}>
-          <option value={messages.DefaultPlaceHolder.defaultMessage} dest={null} hidden>Select Form</option>
-          <option value={messages.DefaultPlaceHolder.defaultMessage} dest="All">All</option>
-          <option value={messages.TargetPlaceHolder.defaultMessage} dest="Target">Target</option>
-          <option value={messages.ExperimentPlaceHolder.defaultMessage} dest="Experiment">Experiment</option>
-          <option value={messages.CitationPlaceHolder.defaultMessage} dest="Citation">Citation</option>
+          <option value={null} hidden>Select Form</option>
+          <option value="All">{messages.DefaultPlaceHolder.defaultMessage}</option>
+          <option value="Target">{messages.TargetPlaceHolder.defaultMessage}</option>
+          <option value="Experiment">{messages.ExperimentPlaceHolder.defaultMessage}</option>
+          <option value="Citation">{messages.CitationPlaceHolder.defaultMessage}</option>
         </Select>
         <br />
         <form onSubmit={(e) => this.onSubmit(e)}>
