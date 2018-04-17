@@ -31,7 +31,7 @@ class DbEntry extends React.Component { // eslint-disable-line react/prefer-stat
       margin:auto;
       width:100%;
       height:auto;
-      background-color: ${theme.get('tertiary')};
+      background-color: ${theme.get('primary')};
       color: $(theme.get('secondary_text'));
       position:relative;
       display: flex;

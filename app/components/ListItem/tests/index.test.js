@@ -1,9 +1,11 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
+//
+// import ListItem from '../index';
+//
+// test = { thing: "test" }
 
-// import DbViewport from '../index';
-
-describe('<DbViewport />', () => {
+describe('<ListItem />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
