@@ -9,13 +9,14 @@ import PropTypes from 'prop-types';
 import { styledElements, getActive } from 'themes';
 import styled from 'styled-components';
 import messages from './messages';
+import { SCHEMAS } from '../../containers/App/constants';
 
 class SearchBar extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor() {
     super();
     this.state = {
       selection: 'Search the Database',
-      destination: null,
+      destination: 'blank',
       query: ' ',
     };
 
@@ -25,22 +26,22 @@ class SearchBar extends React.Component { // eslint-disable-line react/prefer-st
   onSubmit(e) {
     e.preventDefault();
     const text = document.getElementById('search').value;
-    this.props.handler(this.destination, text);
+    this.props.handler(this.state.destination, text);
   }
 
   changeSelection = (e) => {
     let message = '';
     switch (e.target.value) {
-      case 'All':
+      case 'blank':
         message = messages.DefaultPlaceHolder.defaultMessage;
         break;
-      case 'Target':
+      case 'target':
         message = messages.TargetPlaceHolder.defaultMessage;
         break;
-      case 'Experiment':
+      case 'experiment':
         message = messages.ExperimentPlaceHolder.defaultMessage;
         break;
-      case 'Citation':
+      case 'citation':
         message = messages.CitationPlaceHolder.defaultMessage;
         break;
       default:
@@ -56,6 +57,14 @@ class SearchBar extends React.Component { // eslint-disable-line react/prefer-st
     const Search = styledElements.SearchBar;
     const Submit = styledElements.Submit;
     const theme = getActive();
+    // const schema = SCHEMAS[this.state.selection].map((value, index) =>
+    //   <option value={value.label} key={index.toString()}>{value.name}</option>
+    // );
+    console.log(this.state.selection, SCHEMAS[this.state.destination]);
+    const schema = SCHEMAS[this.state.destination].map((value, index) =>
+      <option value={value.name} key={index.toString()}>{value.label}</option>
+    );
+
     const Select = styled.select`
       border: 1px solid black;
       margin-left: 5px;
@@ -68,10 +77,14 @@ class SearchBar extends React.Component { // eslint-disable-line react/prefer-st
       <div>
         <Select onChange={this.changeSelection}>
           <option value={null} hidden>Select Form</option>
-          <option value="All">{messages.DefaultPlaceHolder.defaultMessage}</option>
-          <option value="Target">{messages.TargetPlaceHolder.defaultMessage}</option>
-          <option value="Experiment">{messages.ExperimentPlaceHolder.defaultMessage}</option>
-          <option value="Citation">{messages.CitationPlaceHolder.defaultMessage}</option>
+          <option value="blank">{messages.DefaultPlaceHolder.defaultMessage}</option>
+          <option value="target">{messages.TargetPlaceHolder.defaultMessage}</option>
+          <option value="experiment">{messages.ExperimentPlaceHolder.defaultMessage}</option>
+          <option value="citation">{messages.CitationPlaceHolder.defaultMessage}</option>
+        </Select>
+        <Select >
+          <option value={null} hidden>Select Entry</option>
+          {schema}
         </Select>
         <br />
         <form onSubmit={(e) => this.onSubmit(e)}>
