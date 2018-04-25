@@ -30,8 +30,10 @@ import Footer from 'containers/Footer/Loadable';
 // import Analysis from 'containers/Analysis/Loadable';
 
 export default function App() {
+  // this.reg = { loggedIn: true, isAdmin: true };
   return (
     <div className="app_container container-fluid">
+      {/* reg={this.reg} */}
       {/* <NavBar location={this.props.location} /> */}
       <NavBar />
       <div className="body_wrap">

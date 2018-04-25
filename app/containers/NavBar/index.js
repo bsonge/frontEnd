@@ -35,8 +35,8 @@ export class NavBar extends React.Component { // eslint-disable-line react/prefe
     const theme = getActive();
     // const ProfileBtn = styledElements.ProfileBtn;
     // const mochComponents = this.props.entries.map((entry, idx) => <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} key={idx.toString()} />);
-    const loggedIn = false;
-    const isAdmin = false;
+    const loggedIn = true;
+    const isAdmin = true;
     const loginStuff = () => {
       let stuff;
       if (loggedIn && isAdmin) {

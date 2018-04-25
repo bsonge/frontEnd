@@ -8,32 +8,38 @@ import React from 'react';
 // import styled from 'styled-components';
 // import { getActive } from 'themes';
 import PropTypes from 'prop-types';
-import { Well, Col, Row } from 'react-bootstrap';
+import { Well, Col, Row, Button, ButtonToolbar } from 'react-bootstrap';
+import pencil from '../../images/pencil.png';
+import dnld from '../../images/dnld.png';
 
 import ListItem from '../ListItem';
 
 class ListView extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    // const theme = getActive();
-    // const ViewPort = styled.div`
-    //   ${''/* border: 1px solid black; */}
-    //   border-radius: 5px;
-    //   margin:auto;
-    //   width:100%;
-    //   margin-top: 20px;
-    //   background-color: ${theme.get('primary')};
-    //   overflow-y: scroll;
-    // `;
-    // const Wrapper = styled.div`
-    //   width: 800px;
-    //   height:100%;
-    //   border-radius: 5px;
-    // `;
-    const mochComponents = this.props.entries.map((entry, idx) => <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} key={idx.toString()} />);
+    this.loggedIn = true;
+    this.isAdmin = true;
+    const mochComponents = this.props.entries.map((entry, idx) => (<span style={{ position: 'relative' }}>
+      {
+        // () => (this.isAdmin && this.loggedIn) ? (
+        //   <ButtonToolbar style={{ width: '99%', margin: 'auto' }}>
+        //     <Button bsStyle="danger" bsSize="xsmall" style={{ float: 'right', color: 'black' }}>X</Button>
+        //     <Button bsStyle="success" bsSize="xsmall" style={{ float: 'right' }}><img alt="edit" src={pencil} style={{ width: '15px', height: 'auto' }} /></Button>
+        //     <Button bsStyle="warning" bsSize="xsmall" style={{ float: 'right' }}><img alt="edit" src={dnld} style={{ width: '15px', height: 'auto' }} /></Button>
+        //   </ButtonToolbar>
+        // ) : ''
+      }
+      <ButtonToolbar style={{ width: '99%', margin: 'auto' }}>
+        <Button bsStyle="danger" bsSize="xsmall" style={{ float: 'right', color: 'black' }}>X</Button>
+        <Button bsStyle="success" bsSize="xsmall" style={{ float: 'right' }}><img alt="edit" src={pencil} style={{ width: '15px', height: 'auto' }} /></Button>
+        <Button bsStyle="warning" bsSize="xsmall" style={{ float: 'right' }}><img alt="edit" src={dnld} style={{ width: '15px', height: 'auto' }} /></Button>
+      </ButtonToolbar>
+
+      <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} key={idx.toString()} />
+    </span>));
     return (
       <Row>
         <Col md={6} mdOffset={1} >
-          <Well>{mochComponents}</Well>
+          <Well >{mochComponents}</Well>
         </Col>
       </Row>
     );
