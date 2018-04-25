@@ -34,6 +34,23 @@ export class NavBar extends React.Component { // eslint-disable-line react/prefe
   render() {
     const theme = getActive();
     // const ProfileBtn = styledElements.ProfileBtn;
+    // const mochComponents = this.props.entries.map((entry, idx) => <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} key={idx.toString()} />);
+    const loggedIn = false;
+    const isAdmin = false;
+    const loginStuff = () => {
+      let stuff;
+      if (loggedIn && isAdmin) {
+        stuff = [{ link: '/entries', text: 'ENTRIES' }, { link: '/profile', text: 'PROFILE' }, { link: '/accounts', text: 'ACCOUNTS' }];
+      } else if (loggedIn) {
+        stuff = [{ link: '/profile', text: 'PROFILE' }];
+      } else {
+        stuff = [{ link: '/login', text: 'LOGIN' }, { link: '/registration', text: 'REGISTER' }];
+      }
+      return stuff.map((entry) => (<NavItem>
+        <NavBtn theme={theme} text={entry.text} link={entry.link} handler={(link) => this.navigate(link)} />
+      </NavItem>));
+    };
+
     return (
       <Navbar inverse collapseOnSelect fluid>
         <Navbar.Header>
@@ -50,24 +67,9 @@ export class NavBar extends React.Component { // eslint-disable-line react/prefe
               <NavBtn theme={theme} text="HOME" link="/" handler={(link) => this.navigate(link)} />
             </NavItem>
             <NavItem>
-              <NavBtn theme={theme} text="ENTRIES" link="/entries" handler={(link) => this.navigate(link)} />
-            </NavItem>
-            <NavItem>
               <NavBtn theme={theme} text="DATABASE" link="/database" handler={(link) => this.navigate(link)} />
             </NavItem>
-            <NavItem>
-              <NavBtn theme={theme} text="LOGIN" link="/login" handler={(link) => this.navigate(link)} />
-            </NavItem>
-            <NavItem>
-              <NavBtn theme={theme} text="REGISTRATION" link="/registration" handler={(link) => this.navigate(link)} />
-            </NavItem>
-            <NavItem>
-              <NavBtn theme={theme} text="PROFILE" link="/profile" handler={(link) => this.navigate(link)} />
-            </NavItem>
-            <NavItem>
-              <NavBtn theme={theme} text="ACCOUNTS" link="/accounts" handler={(link) => this.navigate(link)} />
-            </NavItem>
-            {/* <NavBtn theme={theme} text="DENIED" link="/denied" handler={(link) => this.navigate(link)} /> */}
+            {loginStuff()}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
