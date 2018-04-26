@@ -63,12 +63,6 @@ export class NavBar extends React.Component { // eslint-disable-line react/prefe
         </Navbar.Header>
         <Navbar.Collapse >
           <Nav>
-            <NavItem>
-              <NavBtn theme={theme} text="HOME" link="/" handler={(link) => this.navigate(link)} />
-            </NavItem>
-            <NavItem>
-              <NavBtn theme={theme} text="DATABASE" link="/database" handler={(link) => this.navigate(link)} />
-            </NavItem>
             {loginStuff()}
           </Nav>
         </Navbar.Collapse>
