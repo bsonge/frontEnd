@@ -10,6 +10,7 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const POST_ENTRY = 'app/';
 export const API_URL = 'http://localhost:3001';
 export const SCHEMAS = {
   blank: [],

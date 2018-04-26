@@ -51,7 +51,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
     const shownResults = [];
     for (let i = 0; i < data.length; i += 1) {
       if (data[i][1].length > 0) {
-        shownResults.push(<ListView entries={data[i][1]} key={i.toString()} />);
+        shownResults.push(<ListView dnlder={this.downoadFiles} entries={data[i][1]} key={i.toString()} />);
       }
     }
 

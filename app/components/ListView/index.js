@@ -19,7 +19,7 @@ class ListView extends React.Component { // eslint-disable-line react/prefer-sta
     this.loggedIn = true;
     this.isAdmin = true;
     const mochComponents = this.props.entries.map((entry, idx) => (<span style={{ position: 'relative' }}>
-      {
+      {/* {
         // () => (this.isAdmin && this.loggedIn) ? (
         //   <ButtonToolbar style={{ width: '99%', margin: 'auto' }}>
         //     <Button bsStyle="danger" bsSize="xsmall" style={{ float: 'right', color: 'black' }}>X</Button>
@@ -27,11 +27,10 @@ class ListView extends React.Component { // eslint-disable-line react/prefer-sta
         //     <Button bsStyle="warning" bsSize="xsmall" style={{ float: 'right' }}><img alt="edit" src={dnld} style={{ width: '15px', height: 'auto' }} /></Button>
         //   </ButtonToolbar>
         // ) : ''
-      }
+      } */}
       <ButtonToolbar style={{ width: '99%', margin: 'auto' }}>
         <Button bsStyle="danger" bsSize="xsmall" style={{ float: 'right', color: 'black' }}>X</Button>
         <Button bsStyle="success" bsSize="xsmall" style={{ float: 'right' }}><img alt="edit" src={pencil} style={{ width: '15px', height: 'auto' }} /></Button>
-        <Button bsStyle="warning" bsSize="xsmall" style={{ float: 'right' }}><img alt="edit" src={dnld} style={{ width: '15px', height: 'auto' }} /></Button>
       </ButtonToolbar>
 
       <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} key={idx.toString()} />
@@ -39,7 +38,10 @@ class ListView extends React.Component { // eslint-disable-line react/prefer-sta
     return (
       <Row>
         <Col md={6} mdOffset={1} >
-          <Well >{mochComponents}</Well>
+          <Well >
+            <Button bsStyle="warning" bsSize="xsmall"><img alt="edit" src={dnld} style={{ width: '15px', height: 'auto' }} /></Button>
+            {mochComponents}
+          </Well>
         </Col>
       </Row>
     );

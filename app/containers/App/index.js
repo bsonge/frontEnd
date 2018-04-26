@@ -14,7 +14,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -43,7 +43,7 @@ import saga from './saga';
 export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
-    this.state = { reg: { loggedIn: true, isAdmin: true } };
+    this.state = { reg: { loggedIn: true, isAdmin: true }, test: 'aah' };
   }
   render() {
     return (
@@ -71,7 +71,7 @@ export class App extends React.Component { // eslint-disable-line react/prefer-s
 App.propTypes = {
   // dispatch: PropTypes.func.isRequired,
   // match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+  // location: PropTypes.object.isRequired,
   // history: PropTypes.object.isRequired
 };
 
