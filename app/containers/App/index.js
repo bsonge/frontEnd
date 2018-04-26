@@ -13,6 +13,7 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+// import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -40,12 +41,14 @@ import saga from './saga';
 // import PropTypes from 'prop-types';
 
 export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = { reg: { loggedIn: true, isAdmin: true } };
+  }
   render() {
     return (
       <div className="app_container container-fluid">
-        {/* reg={this.reg} */}
-        {/* <NavBar location={this.props.location} /> */}
-        <NavBar />
+        <NavBar registration={this.state.reg} />
         <div className="body_wrap">
           <Switch>
             <Route exact path="/" component={HomePage} />
@@ -66,7 +69,10 @@ export class App extends React.Component { // eslint-disable-line react/prefer-s
 }
 
 App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  // match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  // history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -83,6 +89,7 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer({ key: 'app', reducer });
 const withSaga = injectSaga({ key: 'app', saga });
+// const withRoutes = withRouter({ key: 'app', router });
 
 export default compose(
   withReducer,

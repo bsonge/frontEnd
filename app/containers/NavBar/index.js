@@ -33,12 +33,10 @@ export class NavBar extends React.Component { // eslint-disable-line react/prefe
 
   render() {
     const theme = getActive();
-    // const ProfileBtn = styledElements.ProfileBtn;
-    // const mochComponents = this.props.entries.map((entry, idx) => <ListItem entry={entry} titleField={this.props.titleField} descriptionField={this.props.descriptionField} key={idx.toString()} />);
-    const loggedIn = true;
-    const isAdmin = true;
+    const { loggedIn, isAdmin } = this.props.registration;
     const loginStuff = () => {
       let stuff;
+
       if (loggedIn && isAdmin) {
         stuff = [{ link: '/entries', text: 'ENTRIES' }, { link: '/profile', text: 'PROFILE' }, { link: '/accounts', text: 'ACCOUNTS' }];
       } else if (loggedIn) {
@@ -72,7 +70,8 @@ export class NavBar extends React.Component { // eslint-disable-line react/prefe
 }
 
 NavBar.propTypes = {
-  // location: PropTypes.object,
+  registration: PropTypes.object.isRequired,
+  // location: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   // active: PropTypes.obj,
 };
