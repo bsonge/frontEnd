@@ -13,7 +13,10 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
 
 import HomePage from 'containers/HomePage/Loadable';
 import EntriesPage from 'containers/EntriesPage/Loadable';
@@ -27,32 +30,62 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import NavBar from 'containers/NavBar/Loadable';
 import Footer from 'containers/Footer/Loadable';
 
-// import Analysis from 'containers/Analysis/Loadable';
 
-export default function App() {
-  // this.reg = { loggedIn: true, isAdmin: true };
-  return (
-    <div className="app_container container-fluid">
-      {/* reg={this.reg} */}
-      {/* <NavBar location={this.props.location} /> */}
-      <NavBar />
-      <div className="body_wrap">
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/entries" component={EntriesPage} />
-          <Route path="/database" component={ViewDBPage} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/login" component={Login} />
-          <Route path="/accounts" component={ManageAccounts} />
-          <Route path="/denied" component={BadPermissions} />
-          <Route path="/registration" component={Registration} />
-          <Route component={NotFoundPage} />
-        </Switch>
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+import makeSelectApp from './selectors';
+import reducer from './reducer';
+import saga from './saga';
+
+// import PropTypes from 'prop-types';
+
+export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  render() {
+    return (
+      <div className="app_container container-fluid">
+        {/* reg={this.reg} */}
+        {/* <NavBar location={this.props.location} /> */}
+        <NavBar />
+        <div className="body_wrap">
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/entries" component={EntriesPage} />
+            <Route path="/database" component={ViewDBPage} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/login" component={Login} />
+            <Route path="/accounts" component={ManageAccounts} />
+            <Route path="/denied" component={BadPermissions} />
+            <Route path="/registration" component={Registration} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
-// App.propTypes = {
-//   page: PropTypes.string,
-// };
+
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  app: makeSelectApp(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'app', reducer });
+const withSaga = injectSaga({ key: 'app', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(App);
